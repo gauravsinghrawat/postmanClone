@@ -455,7 +455,7 @@
                 </div>
             </div>
     </div>
-    <!---------------------------- JavaScript starts here--------------------------------------->
+
     <script type="text/javascript">    
     
     let jsonRadio = document.getElementById('jsonRadio');
@@ -491,8 +491,7 @@
     responseText.style.display = 'none';
     dark.style.display = 'none';
     loader.style.display = 'none';
-    //document.querySelector('#loader').remove();
-    //console.log(cfluid.parentElement.children[0].remove());
+
     
     //hiding jsonBox on selecting customParams
     paramsRadio.addEventListener('click',()=>{
@@ -559,7 +558,7 @@
         let contentType = document.querySelector("input[name='contentType']:checked").value;
         
         setTimeout(function(){
-        //--------------------- checking for content type ------------------ 
+
              if(contentType == 'params'){
             data = {};
             for(let i = 0; i < addParamCount + 1; i++){
@@ -573,7 +572,6 @@
         else{
             dataJson = document.getElementById('jsonText').value;
         }
-     //---------after checking content making request to server ---------------------   
         if(requestType == 'GET' && url != ''){
             var t = Date.now();
             
@@ -612,7 +610,6 @@
                 })
                 .then(response=>response.text())
                 .then((text)=>{
-                    //console.log(text);
                     document.getElementById('responseText').value = text;
                     document.getElementById('prismText').innerHTML = text;
                 }).catch(err=>console.log(err));
@@ -688,6 +685,3 @@
     <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 </body>
 </html>
-<!--
--- https://jsonplaceholder.typicode.com/posts/1
--->
