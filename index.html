@@ -194,13 +194,23 @@
         }
         addParamCount++;
     }
-    
+        
+      let url = document.getElementById('url').value;
+        
     //notification function
     function notifyFun(){
         let notifyDiv = document.createElement('h3');
          notifyDiv.setAttribute('class','bg-danger');
-        let text = 'Enter valid URL before making request..';
-       notifyDiv.textContent = text;
+        let text = 'Enter valid URL before making request......';
+         let empty = " URL can't be empty......";
+        
+        if(url == ''){
+                notifyDiv.textContent = empty;
+           }
+        else{
+            notifyDiv.textContent = text;
+        }
+      
         notify.style.zIndex = `10`;
         notifyDiv.style.transform = `translateX(00px)`;
         notify.appendChild(notifyDiv);
@@ -216,13 +226,13 @@
         
     //request submission after filling data
     submit.addEventListener('click', ()=>{
-        document.getElementById('responseText').value = 'Data Loading...... Please wait......';
-        document.getElementById('prismText').innerHTML = 'Data Loading......Please wait......';
+        document.getElementById('responseText').value = 'Loading......';
+        document.getElementById('prismText').innerHTML = 'Loading......';
         
         loader.style.display = 'block';
-        cfluid.style.background = 'rgba(31,1,5,.9)';
+        cfluid.style.background = 'rgba(255,255,250,.9)';
         
-        let url = document.getElementById('url').value;
+      
         let requestType = document.querySelector("input[name='requestType']:checked").value;
         let contentType = document.querySelector("input[name='contentType']:checked").value;
         
