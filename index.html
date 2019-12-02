@@ -583,12 +583,12 @@
                    // headers: { "Content-type": "application/x-www-form-urlencoded"}
                 params:{ _limit:2 }
                 })
-                .then(response => {
+                .then((response)=> {
                 if(response.ok){
                 resStatus.innerHTML = response.status + ' ok';
                 resType.innerHTML = response.type;
-                const reader = response.body.getReader();
-                resSize.innerHTML = '';
+                //const reader = response.body.getReader();
+                //resSize.innerHTML = '';
                 var t2 = Date.now();
                 resTime.innerHTML = (t2-t) + ' ms';*/
                 return response.text()
