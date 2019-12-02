@@ -7,6 +7,9 @@
             height: 100vh;
             background: url('m.jpg');
             background-attachment: fixed;
+            background-position:center;
+            background-repeat:no-repeat;
+                      background-size: cover
             color: #fff;
         }
         section{
