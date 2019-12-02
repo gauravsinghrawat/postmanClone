@@ -609,9 +609,18 @@
                     },
                      body: dataJson
                 })
-                .then(response=>response.text())
+                .then((response)=> {
+                if(response.ok){
+                resStatus.innerHTML = response.status + ' ok';
+                resType.innerHTML = response.type;
+                var t2 = Date.now();
+                resTime.innerHTML = (t2-t) + ' ms';
+                return response.text()
+               }else{
+                    resStatus.innerHTML = response.status + ' Not found..';
+                }
+                })
                 .then((text)=>{
-                    //console.log(text);
                     document.getElementById('responseText').value = text;
                     document.getElementById('prismText').innerHTML = text;
                 }).catch(err=>console.log(err));
@@ -624,7 +633,19 @@
                   "Content-type": "application/json; charset=UTF-8"
             }
           })
-          .then(response => response.text())
+          .then((response)=> {
+                if(response.ok){
+                resStatus.innerHTML = response.status + ' ok';
+                resType.innerHTML = response.type;
+                //const reader = response.body.getReader();
+                //resSize.innerHTML = '';
+                var t2 = Date.now();
+                resTime.innerHTML = (t2-t) + ' ms';
+                return response.text()
+               }else{
+                    resStatus.innerHTML = response.status + ' Not found..';
+                }
+                })
           .then((json) =>{ 
                 document.getElementById('responseText').value = json;
                 document.getElementById('prismText').innerHTML = json;
@@ -639,7 +660,17 @@
                   "Content-type": "application/json; charset=UTF-8"
                 }
               })
-              .then(response => response.text())
+              .then((response)=> {
+                if(response.ok){
+                resStatus.innerHTML = response.status + ' ok';
+                resType.innerHTML = response.type;
+                var t2 = Date.now();
+                resTime.innerHTML = (t2-t) + ' ms';
+                return response.text()
+               }else{
+                    resStatus.innerHTML = response.status + ' Not found..';
+                }
+                })
               .then((json) =>{ 
                     document.getElementById('responseText').value = json;
                     document.getElementById('prismText').innerHTML = json;
@@ -648,12 +679,32 @@
         else if( requestType == 'DELETE' && url != ''){
             fetch(url,{
                         method: 'DELETE'
-                    }).then(response => response.text())
+                    }).then((response)=> {
+                if(response.ok){
+                resStatus.innerHTML = response.status + ' ok';
+                resType.innerHTML = response.type;
+                var t2 = Date.now();
+                resTime.innerHTML = (t2-t) + ' ms';
+                return response.text()
+               }else{
+                    resStatus.innerHTML = response.status + ' Not found..';
+                }
+                })
                 .then(res=>document.getElementById('prismText').innerHTML = res);
         }
         else if(requestType == 'FILTER' && url != ''){
             fetch(url)
-                .then(response => response.text())
+                .then((response)=> {
+                if(response.ok){
+                resStatus.innerHTML = response.status + ' ok';
+                resType.innerHTML = response.type;
+                var t2 = Date.now();
+                resTime.innerHTML = (t2-t) + ' ms';
+                return response.text()
+               }else{
+                    resStatus.innerHTML = response.status + ' Not found..';
+                }
+                })
                 .then((json) => {
                     document.getElementById('responseText').value = json;
                     document.getElementById('prismText').innerHTML = json;
