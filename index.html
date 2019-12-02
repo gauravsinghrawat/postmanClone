@@ -485,8 +485,6 @@
     responseText.style.display = 'none';
     dark.style.display = 'none';
     loader.style.display = 'none';
-    //document.querySelector('#loader').remove();
-    //console.log(cfluid.parentElement.children[0].remove());
     
     //hiding jsonBox on selecting customParams
     paramsRadio.addEventListener('click',()=>{
@@ -532,7 +530,7 @@
         notifyDiv.style.transform = `translateX(00px)`;
         notify.appendChild(notifyDiv);
         
-        //notification will be disappear after 3 sec
+        //notification will be disappear after 2 sec
          setTimeout(()=>notify.firstChild.remove(),2000);
     }
    
@@ -545,8 +543,9 @@
     submit.addEventListener('click', ()=>{
         document.getElementById('responseText').value = 'Data Loading...... Please wait......';
         document.getElementById('prismText').innerHTML = 'Data Loading......Please wait......';
+        
         loader.style.display = 'block';
-        cfluid.style.background = 'rgba(1,1,55,.9)';
+        cfluid.style.background = 'rgba(31,1,5,.9)';
         
         let url = document.getElementById('url').value;
         let requestType = document.querySelector("input[name='requestType']:checked").value;
@@ -570,20 +569,15 @@
      //---------after checking content making request to server ---------------------   
         if(requestType == 'GET' && url != ''){
             var t = Date.now();
-            
-           // var t = (new Date()).getTime();
+
             fetch(url,{
                     method: 'GET',
-                   // mode: 'cors',
-                   // headers: { "Content-type": "application/x-www-form-urlencoded"}
                 params:{ _limit:2 }
                 })
                 .then((response)=> {
                 if(response.ok){
                 resStatus.innerHTML = response.status + ' ok';
                 resType.innerHTML = response.type;
-                //const reader = response.body.getReader();
-                //resSize.innerHTML = '';
                 var t2 = Date.now();
                 resTime.innerHTML = (t2-t) + ' ms';
                 return response.text()
@@ -632,8 +626,6 @@
                 if(response.ok){
                 resStatus.innerHTML = response.status + ' ok';
                 resType.innerHTML = response.type;
-                //const reader = response.body.getReader();
-                //resSize.innerHTML = '';
                 var t2 = Date.now();
                 resTime.innerHTML = (t2-t) + ' ms';
                 return response.text()
